@@ -6,6 +6,18 @@ supervisor_daemon: supervisor
 supervisor_hosting_queued_conf_path: /etc/supervisor/conf.d/hosting-queue-runner.conf
 
 extra_packages:
+  - php
+  - php-mcrypt
+  - php-cli
+  - php-common
+  - php-curl
+  - php-dev
+  - php-fpm
+  - php-gd
+  - php-pear
+  - php-apcu
+  - postfix
+  - libpcre3-dev
   - vim
   - supervisor
   - openssl
