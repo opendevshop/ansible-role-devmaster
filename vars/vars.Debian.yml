@@ -21,3 +21,6 @@ extra_packages:
   - vim
   - supervisor
   - openssl
+  - postfix
+  - cron
+  - zip
