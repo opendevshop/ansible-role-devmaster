@@ -99,13 +99,6 @@
     - update hosting-queued service
     - restart hosting queued
 
-- name: Hosting Queue | Reload and ensure enabled.
-  when: hosting_queued_running
-  service:
-    name: "hosting-queued"
-    state: reloaded
-    enabled: yes
-
 - name: DevShop.Support | Save License Key
   become: yes
   become_user: "{{ aegir_user_name }}"
