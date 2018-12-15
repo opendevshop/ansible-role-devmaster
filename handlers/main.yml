@@ -6,5 +6,5 @@
 - name: restart hosting queued
   service:
     name: "hosting-queued"
-    state: restarted
-    sleep: 3
+    state: reloaded
+    sleep: 1

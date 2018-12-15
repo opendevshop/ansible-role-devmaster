@@ -103,7 +103,7 @@
   when: hosting_queued_running
   service:
     name: "hosting-queued"
-    state: reload
+    state: reloaded
     enabled: yes
 
 - name: DevShop.Support | Save License Key
