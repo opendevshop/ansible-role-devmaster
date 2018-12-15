@@ -91,6 +91,21 @@
   args:
     creates: "{{ aegir_user_home }}/.drush/hostmaster.alias.drushrc.php"
 
+- name: Hosting Queue | Setup Service
+  get_url:
+    url: "https://cgit.drupalcode.org/provision/plain/debian/aegir3-hostmaster.hosting-queued.init?id={{ aegir_hosting_version }}"
+    dest: "{{ hosting_queued_init_path }}"
+  notify:
+    - update hosting-queued service
+    - restart hosting queued
+
+- name: Hosting Queue | Reload and ensure enabled.
+  when: hosting_queued_running
+  service:
+    name: "hosting-queued"
+    state: reload
+    enabled: yes
+
 - name: DevShop.Support | Save License Key
   become: yes
   become_user: "{{ aegir_user_name }}"
@@ -148,8 +163,6 @@
   become_user: "{{ aegir_user_name }}"
   become_method: "{{ ansible_become_method_aegir }}"
 
-- name: Setup Supervisor
-  include: "supervisor.yml"
 
 # CentOS started failing tests because the PHP CLI was throwing Warnings about date.timezone missing.
 # @TODO: Investigate php.ini for CLI on all OS

@@ -1,6 +1,10 @@
 ---
-- name: restart supervisor
+
+- name: update hosting-queued service
+  command: "update-rc.d hosting-queued defaults"
+
+- name: restart hosting queued
   service:
-    name: "{{ supervisor_daemon }}"
+    name: "hosting-queued"
     state: restarted
     sleep: 3
